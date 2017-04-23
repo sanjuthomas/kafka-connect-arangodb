@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class ArangoDBSinkConnector extends SinkConnector{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ArangoDBSinkConnector.class);
-	public static final String MARKLOGIC_CONNECTOR_VERSION = "1.0";
+	public static final String ARANGODB_CONNECTOR_VERSION = "1.0";
 	
 	private Map<String, String> config;
 
@@ -57,7 +57,7 @@ public class ArangoDBSinkConnector extends SinkConnector{
 	@Override
 	public String version() {
 		
-		return MARKLOGIC_CONNECTOR_VERSION;
+		return ARANGODB_CONNECTOR_VERSION;
 	}
 	
 

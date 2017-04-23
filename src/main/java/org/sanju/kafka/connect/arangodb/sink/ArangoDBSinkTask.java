@@ -72,7 +72,7 @@ public class ArangoDBSinkTask extends SinkTask {
 
     public String version() {
 
-        return ArangoDBSinkConnector.MARKLOGIC_CONNECTOR_VERSION;
+        return ArangoDBSinkConnector.ARANGODB_CONNECTOR_VERSION;
     }
 
 }

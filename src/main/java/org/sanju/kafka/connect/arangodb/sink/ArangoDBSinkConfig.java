@@ -18,20 +18,20 @@ public class ArangoDBSinkConfig extends AbstractConfig {
     
     private static final Logger logger = LoggerFactory.getLogger(ArangoDBSinkConfig.class);
 	
-	public static final String CONNECTION_URL = "arango.connection.url";
-	private static final String CONNECTION_URL_DOC = "arango application server connection URL";
+	public static final String ARANAGODB_HOSTS = "arangodb.hosts";
+	private static final String ARANAGODB_HOSTS_DOC = "arangodb hosts ip and port";
 	
-	public static final String CONNECTION_USER = "arango.connection.user";
-	private static final String CONNECTION_USER_DOC = "arango connection user.";
+	public static final String CONNECTION_USER = "arangodb.user";
+	private static final String CONNECTION_USER_DOC = "arangodb connection user.";
 
-	public static final String CONNECTION_PASSWORD = "arango.connection.password";
-	private static final String CONNECTION_PASSWORD_DOC = "arango connection password";
+	public static final String CONNECTION_PASSWORD = "arangodb.password";
+	private static final String CONNECTION_PASSWORD_DOC = "arangodb connection password";
 
-	public static final String BATCH_SIZE = "arango.batch.size";
-	private static final int BATCH_SIZE_DEFAULT = 1000;
-	private static final String BATCH_SIZE_DOC = "arango batch size";
+	public static final String BATCH_SIZE = "arangodb.batch.size";
+	private static final int BATCH_SIZE_DEFAULT = 100;
+	private static final String BATCH_SIZE_DOC = "arangodb batch size";
 	
-	public static final String MAX_RETRIES = "arango.max.retries";
+	public static final String MAX_RETRIES = "arangodb.max.retries";
 	private static final int MAX_RETRIES_DEFAULT = 100;
 	private static final String MAX_RETRIES_DOC =  "The maximum number of times to retry on errors/exception before failing the task.";
 	
@@ -40,7 +40,7 @@ public class ArangoDBSinkConfig extends AbstractConfig {
 	private static final String RETRY_BACKOFF_MS_DOC = "The time in milliseconds to wait following an error/exception before a retry attempt is made.";
 	
 	public static ConfigDef CONFIG_DEF = new ConfigDef()
-			.define(CONNECTION_URL, Type.STRING, Importance.HIGH, CONNECTION_URL_DOC)
+			.define(ARANAGODB_HOSTS, Type.STRING, Importance.HIGH, ARANAGODB_HOSTS_DOC)
 			.define(CONNECTION_USER, Type.STRING, Importance.HIGH, CONNECTION_USER_DOC)
 			.define(CONNECTION_PASSWORD, Type.STRING, Importance.LOW, CONNECTION_PASSWORD_DOC)
 			.define(BATCH_SIZE, Type.INT, BATCH_SIZE_DEFAULT, Importance.MEDIUM, BATCH_SIZE_DOC)
