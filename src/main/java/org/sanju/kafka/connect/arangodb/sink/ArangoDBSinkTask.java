@@ -8,7 +8,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.connect.errors.RetriableException;
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.apache.kafka.connect.sink.SinkTask;
-import org.sanju.kafka.connect.arangodb.BufferedArangoDBWriter;
+import org.sanju.kafka.connect.arangodb.ArangoDBWriter;
 import org.sanju.kafka.connect.arangodb.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class ArangoDBSinkTask extends SinkTask {
             writer.write(records);
         } catch (final RetriableException e) {
             logger.warn("Setting the task timeout to {} ms upon RetriableException", timeout);
-            this.writer = new BufferedArangoDBWriter(config);
+            this.writer = new ArangoDBWriter(config);
             context.timeout(timeout);
             throw e;
         }
@@ -54,7 +54,7 @@ public class ArangoDBSinkTask extends SinkTask {
         logger.info("start called!");
         this.config = config;
         this.timeout = Integer.valueOf(config.get(ArangoDBSinkConfig.RETRY_BACKOFF_MS));
-        this.writer = new BufferedArangoDBWriter(config);
+        this.writer = new ArangoDBWriter(config);
     }
 
     @Override
