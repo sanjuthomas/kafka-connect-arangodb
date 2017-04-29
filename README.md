@@ -25,6 +25,7 @@ value.converter.schemas.enable=false
 ```
 key.converter.schemas.enable=false
 value.converter.schemas.enable=false
+```
 
 In distributed mode, if you run more than one worker per host, the ```rest.port``` settings must have different values for each instance. By default REST interface is available at 8083.
 
