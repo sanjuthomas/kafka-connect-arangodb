@@ -28,7 +28,7 @@ public class ArangoDBWriter implements Writer{
 	private static final Logger logger = LoggerFactory.getLogger(ArangoDBWriter.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 	private final ArangoDB arangoDB;
-	private final int batchSize = 100;
+	private final int batchSize;
 	private final String databaseName;
 	private final String collectionName;
 	
@@ -41,6 +41,8 @@ public class ArangoDBWriter implements Writer{
 	    
 	    databaseName = config.get(ArangoDBSinkConfig.DATABASE_NAME);
 	    collectionName = config.get(ArangoDBSinkConfig.COLLECTION_NAME);
+	    batchSize = Integer.valueOf(config.get(ArangoDBSinkConfig.BATCH_SIZE));
+	    
 	}
 	
 
