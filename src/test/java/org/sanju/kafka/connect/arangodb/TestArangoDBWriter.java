@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.kafka.connect.sink.SinkRecord;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sanju.kafka.connect.arangodb.sink.ArangoDBSinkConfig;
@@ -34,9 +35,9 @@ public class TestArangoDBWriter {
 	@Before
 	public void setup() {
 		conf.put(ArangoDBSinkConfig.ARANAGODB_HOST, "127.0.0.1");
-		conf.put(ArangoDBSinkConfig.ARANAGODB_PORT, "32769");
-		conf.put(ArangoDBSinkConfig.CONNECTION_USER, "kafka-connect-arangodb-user");
-		conf.put(ArangoDBSinkConfig.CONNECTION_PASSWORD, "kafka-connect-arangodb-user");
+		conf.put(ArangoDBSinkConfig.ARANAGODB_PORT, "8529");
+		conf.put(ArangoDBSinkConfig.CONNECTION_USER, "root");
+		conf.put(ArangoDBSinkConfig.CONNECTION_PASSWORD, "");
 		conf.put(ArangoDBSinkConfig.DATABASE_NAME, "kafka-connect-arangodb");
 		conf.put(ArangoDBSinkConfig.COLLECTION_NAME, "trades");
 		conf.put(ArangoDBSinkConfig.BATCH_SIZE, "100");
@@ -45,6 +46,11 @@ public class TestArangoDBWriter {
 	            Integer.valueOf(conf.get(ArangoDBSinkConfig.ARANAGODB_PORT)))
 	            .user(conf.get(ArangoDBSinkConfig.CONNECTION_USER))
 	            .password(conf.get(ArangoDBSinkConfig.CONNECTION_PASSWORD)).build();
+	}
+	
+	@After
+	public void tearDown() {
+		arangoDB.db("kafka-connect-arangodb").collection("trades").truncate();
 	}
 	
 	
@@ -57,15 +63,16 @@ public class TestArangoDBWriter {
 		final QuoteRequest quoteRequest = new QuoteRequest("Q1", "APPL", 100, client, new Date());
 		
 		documents.add(new SinkRecord("topic", 1, null, null, null, MAPPER.convertValue(quoteRequest, Map.class), 0));
-	//	writer.write(documents);
+		final List<String> keys = writer.write(documents);
+		
+		assertEquals(1, keys.size());
 
-		QuoteRequest document = arangoDB.db(ArangoDBSinkConfig.DATABASE_NAME)
-				.collection(ArangoDBSinkConfig.COLLECTION_NAME).getDocument(quoteRequest.getKey(), QuoteRequest.class);
-		assertEquals(document.getKey(), "Q1");
-		assertEquals(document.getSymbol(), "APPL");
-		assertEquals(document.getQuantity(), 100);
-		assertEquals(document.getClient().getId(), "C1");
-		assertEquals(document.getClient().getAccount().getId(), "A1");
+		final Map<?, ?> document = arangoDB.db("kafka-connect-arangodb")
+				.collection("trades").getDocument(keys.get(0), Map.class);
+		
+		assertEquals("APPL", document.get("symbol"));
+		assertEquals(100L, document.get("quantity"));
+		
 	}
 	
 }

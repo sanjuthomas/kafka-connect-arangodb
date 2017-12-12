@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
+import com.arangodb.entity.DocumentCreateEntity;
+import com.arangodb.entity.MultiDocumentEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
@@ -47,9 +49,10 @@ public class ArangoDBWriter implements Writer{
 	
 
     @Override
-    public void write(final Collection<SinkRecord> records) {
+    public List<String> write(final Collection<SinkRecord> records) {
         
         final List<List<SinkRecord>> partitions = Lists.partition(new ArrayList<>(records), batchSize);
+        final List<String> keys = new ArrayList<>();
         partitions.forEach(partition ->{
             final List<String> rs = new ArrayList<>();
             partition.forEach(r -> {
@@ -60,11 +63,17 @@ public class ArangoDBWriter implements Writer{
                 }
             });
             try{
-                arangoDB.db(databaseName).collection(collectionName).insertDocuments(rs);
+                final MultiDocumentEntity<DocumentCreateEntity<String>> documentEntities = arangoDB.db(databaseName).collection(collectionName).insertDocuments(rs);
+                final Collection<DocumentCreateEntity<String>> documents = documentEntities.getDocuments();
+                if(null != documents) {
+                		documents.forEach(d -> keys.add(d.getKey()));
+                }
             }catch(ArangoDBException e){
                 logger.error("Exception occurred while saving the document to ArangoDB, {}", e);
                 throw new RetriableException(e);
             }
         });
+        
+        return keys;
     }
 }
