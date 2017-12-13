@@ -82,8 +82,9 @@ public class ArangoDBSinkTask extends SinkTask {
 		logger.info("start called!");
 		this.config = config;
 		this.timeout = Integer.valueOf(config.get(ArangoDBSinkConfig.RETRY_BACKOFF_MS));
-		this.maxRetries = Integer.valueOf(config.get(ArangoDBSinkConfig.BATCH_SIZE));
-		this.writer = new ArangoDBWriter(config);
+		this.maxRetries = Integer.valueOf(config.get(ArangoDBSinkConfig.MAX_RETRIES));
+		this.remainingRetries = maxRetries;
+		initWriter(config);
 	}
 
 	@Override
