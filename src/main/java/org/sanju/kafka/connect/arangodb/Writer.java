@@ -1,6 +1,7 @@
 package org.sanju.kafka.connect.arangodb;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.kafka.connect.sink.SinkRecord;
 
@@ -11,5 +12,5 @@ import org.apache.kafka.connect.sink.SinkRecord;
  */
 public interface Writer {
 	
-	void write(final Collection<SinkRecord> recrods);
-}
+	List<String> write(final Collection<SinkRecord> recrods);    
+}						

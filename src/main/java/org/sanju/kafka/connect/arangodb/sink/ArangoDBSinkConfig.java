@@ -39,6 +39,9 @@ public class ArangoDBSinkConfig extends AbstractConfig {
 	public static final String BATCH_SIZE = "arangodb.batch.size";
 	private static final String BATCH_SIZE_DOC = "arangodb batch size";
 	
+	public static final String WRITER_IMPL = "arangodb.writer.impl";
+	private static final String WRITER_IMPL_DOC = "arangodb writer impl";
+	
 	public static final String MAX_RETRIES = "arangodb.max.retries";
 	private static final String MAX_RETRIES_DOC =  "The maximum number of times to retry on errors/exception before failing the task.";
 	
@@ -55,6 +58,7 @@ public class ArangoDBSinkConfig extends AbstractConfig {
 			.define(MAX_RETRIES, Type.INT, Importance.MEDIUM, MAX_RETRIES_DOC)
 			.define(DATABASE_NAME, Type.STRING, Importance.MEDIUM, DATABASE_NAME_DOC)
 			.define(COLLECTION_NAME, Type.STRING, Importance.MEDIUM, COLLECTION_NAME_DOC)
+			.define(WRITER_IMPL, Type.STRING, Importance.MEDIUM, WRITER_IMPL_DOC)
 			.define(RETRY_BACKOFF_MS, Type.INT, RETRY_BACKOFF_MS_DEFAULT, Importance.MEDIUM, RETRY_BACKOFF_MS_DOC);
 
 	public ArangoDBSinkConfig(final Map<?, ?> originals) {
