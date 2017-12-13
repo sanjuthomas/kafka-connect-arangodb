@@ -25,6 +25,7 @@ import mockit.Deencapsulation;
 import mockit.Expectations;
 import mockit.Injectable;
 import mockit.Tested;
+import mockit.Verifications;
 
 /**
  * 
@@ -62,7 +63,7 @@ public class TestArangoDBSinkTask {
 	
 	
 	@Test(expected = ConnectException.class)
-	public void shouldPutRecordsIntoSync() {
+	public void testRetryCount() {
 		
 		arangoDBSinkTask.start(conf);
 		
@@ -96,6 +97,32 @@ public class TestArangoDBSinkTask {
 				}
 			}
 		}
+	}
+	
+	@Test
+	public void shouldPutRecordsInTheWriter() {
+		
+		arangoDBSinkTask.start(conf);
+		initDependencies();
+		
+		new Expectations() {{
+			writer.write(documents);
+			times = 1;
+		}};
+		
+		final Account account = new Account("A1");
+		final Client client = new Client("C1", account);
+		final QuoteRequest quoteRequest = new QuoteRequest("Q1", "APPL", 100, client, new Date());
+		documents.add(new SinkRecord("trades", 1, null, null, null,  MAPPER.convertValue(quoteRequest, Map.class), 0));
+		arangoDBSinkTask.put(documents);
+		
+		new Verifications() {{
+			List<SinkRecord> ds;
+			writer.write(ds = withCapture());
+			assertEquals("trades", ds.get(0).topic());
+			assertEquals(1, ds.size());
+		}};
+	
 	}
 
 
