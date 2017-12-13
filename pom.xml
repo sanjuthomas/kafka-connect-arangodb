@@ -61,13 +61,6 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>21.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.netflix.rxjava</groupId>
-			<artifactId>rxjava-core</artifactId>
-			<version>0.19.0</version>
 		</dependency>
 
 	</dependencies>
@@ -95,12 +88,10 @@
 						<configuration>
 							<artifactSet>
 								<includes>
-									<include>org/sanju/**</include>
-									<include>com/arangodb/**</include>
+                                    	<include>arangodb-java-driver-4.2.7.jar</include>
+                                    	<include>guava-21.0.jar</include>
+                                    	<include>org/sanju/**</include>
 								</includes>
-								<excludes>
-									<exclude>org/xerial/**</exclude>
-								</excludes>
 							</artifactSet>
 						</configuration>
 					</execution>
