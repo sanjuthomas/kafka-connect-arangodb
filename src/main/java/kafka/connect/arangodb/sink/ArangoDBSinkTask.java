@@ -1,4 +1,4 @@
-package org.sanju.kafka.connect.arangodb.sink;
+package kafka.connect.arangodb.sink;
 
 import java.lang.reflect.Constructor;
 import java.util.Collection;
@@ -10,10 +10,11 @@ import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.errors.RetriableException;
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.apache.kafka.connect.sink.SinkTask;
-import org.sanju.kafka.connect.arangodb.ArangoDBWriter;
-import org.sanju.kafka.connect.arangodb.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import kafka.connect.arangodb.ArangoDBWriter;
+import kafka.connect.arangodb.Writer;
 
 /**
  * 

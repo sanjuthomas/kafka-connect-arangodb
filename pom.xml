@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.sanju</groupId>
+	<groupId>kafka.connect</groupId>
 	<artifactId>kafka-connect-arangodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -90,7 +90,7 @@
 								<includes>
                                     	<include>arangodb-java-driver-4.2.7.jar</include>
                                     	<include>guava-21.0.jar</include>
-                                    	<include>org/sanju/**</include>
+                                    	<include>kafka/connect/**</include>
 								</includes>
 							</artifactSet>
 						</configuration>

@@ -1,4 +1,4 @@
-package org.sanju.kafka.connect.arangodb;
+package kafka.connect.arangodb;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,13 +12,16 @@ import org.apache.kafka.connect.sink.SinkRecord;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.sanju.kafka.connect.arangodb.sink.ArangoDBSinkConfig;
-import org.sanju.kafka.connect.beans.Account;
-import org.sanju.kafka.connect.beans.Client;
-import org.sanju.kafka.connect.beans.QuoteRequest;
 
 import com.arangodb.ArangoDB;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import kafka.connect.arangodb.ArangoDBWriter;
+import kafka.connect.arangodb.Writer;
+import kafka.connect.arangodb.sink.ArangoDBSinkConfig;
+import kafka.connect.beans.Account;
+import kafka.connect.beans.Client;
+import kafka.connect.beans.QuoteRequest;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package org.sanju.kafka.connect.beans;
+package kafka.connect.beans;
 
 /**
  *

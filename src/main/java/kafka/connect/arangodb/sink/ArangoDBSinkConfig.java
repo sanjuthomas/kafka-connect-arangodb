@@ -1,4 +1,4 @@
-package org.sanju.kafka.connect.arangodb.sink;
+package kafka.connect.arangodb.sink;
 
 import java.util.Map;
 

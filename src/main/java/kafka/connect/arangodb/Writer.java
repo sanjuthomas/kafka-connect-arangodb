@@ -1,4 +1,4 @@
-package org.sanju.kafka.connect.arangodb;
+package kafka.connect.arangodb;
 
 import java.util.Collection;
 import java.util.List;
