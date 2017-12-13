@@ -2,7 +2,7 @@
 Kafka Connect ArangoDB  is a sink only connector to pull messages from Kafka to store in ArangoDB as JSON documents.
 
 ## Prerequisites
-[Apache ZooKeeper](https://zookeeper.apache.org) and [Apache Kafka](https://kafka.apache.org) installed and running in your machine. Please refer to respective sites to download and start ZooKeeper and Kafka. 
+[Apache ZooKeeper](https://zookeeper.apache.org) and [Apache Kafka](https://kafka.apache.org) installed and running in your machine. Please refer to respective sites to download, install, and start ZooKeeper and Kafka. 
 
 ## What is ArangoDB?
 ArangoDB is a NoSQL multi-model database. Its creators refer to it as a "native multi-model" database to indicate that it was designed specifically to allow key/value, document, and graph data to be stored together and queried with a common language. For more details, please refer to ArangoDB official [website.](https://www.arangodb.com/)
