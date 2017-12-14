@@ -10,6 +10,10 @@ ArangoDB is a NoSQL multi-model database. Its creators refer to it as a "native 
 ## What is Apache Kafka?
 Apache Kafka is an open-source stream processing platform developed by the Apache Software Foundation written in Scala and Java. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. For more details, please refer to [kafka home page](https://kafka.apache.org/).
 
+## High Level Architecture Diagram
+
+![Kafka Connect MarkLogic](arangodb.png)
+
 ## Data Mapping
 ArangoDB is a schemaless document store/NoSQL database. Since we are working with plain JSON data, we don't need a schema to serialize and deserialize the messages. 
 
