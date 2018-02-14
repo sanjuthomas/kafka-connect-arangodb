@@ -59,7 +59,7 @@ bin/connect-distributed.sh config/arangodb-connect-distributed.properties config
 ```
 
 ## Contact
-Create an issue in the GitHub.
+Create an issue in the GitHub or write a line to kafka@sanju.org
 
 ## License
 The project is licensed under the MIT license.
