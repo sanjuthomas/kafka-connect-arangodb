@@ -37,8 +37,8 @@ public class ArangoDBWriter implements Writer{
 	
 	public ArangoDBWriter(final Map<String, String> config){
 	    
-	    arangoDB = new ArangoDB.Builder().host(config.get(ArangoDBSinkConfig.ARANAGODB_HOST), 
-	            Integer.valueOf(config.get(ArangoDBSinkConfig.ARANAGODB_PORT)))
+	    arangoDB = new ArangoDB.Builder().host(config.get(ArangoDBSinkConfig.ARANGODB_HOST), 
+	            Integer.valueOf(config.get(ArangoDBSinkConfig.ARANGODB_PORT)))
 	            .user(config.get(ArangoDBSinkConfig.CONNECTION_USER))
 	            .password(config.get(ArangoDBSinkConfig.CONNECTION_PASSWORD)).build();
 	    

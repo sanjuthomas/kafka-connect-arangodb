@@ -18,11 +18,11 @@ public class ArangoDBSinkConfig extends AbstractConfig {
     
     private static final Logger logger = LoggerFactory.getLogger(ArangoDBSinkConfig.class);
 	
-	public static final String ARANAGODB_HOST = "arangodb.host";
-	private static final String ARANAGODB_HOST_DOC = "arangodb host ip";
+	public static final String ARANGODB_HOST = "arangodb.host";
+	private static final String ARANGODB_HOST_DOC = "arangodb host ip";
 	
-	public static final String ARANAGODB_PORT = "arangodb.port";
-    private static final String ARANAGODB_PORT_DOC = "arangodb port";
+	public static final String ARANGODB_PORT = "arangodb.port";
+    private static final String ARANGODB_PORT_DOC = "arangodb port";
     
 	public static final String CONNECTION_USER = "arangodb.user";
 	private static final String CONNECTION_USER_DOC = "arangodb connection user.";
@@ -50,8 +50,8 @@ public class ArangoDBSinkConfig extends AbstractConfig {
 	private static final String RETRY_BACKOFF_MS_DOC = "The time in milliseconds to wait following an error/exception before a retry attempt is made.";
 	
 	public static ConfigDef CONFIG_DEF = new ConfigDef()
-			.define(ARANAGODB_HOST, Type.STRING, Importance.HIGH, ARANAGODB_HOST_DOC)
-			.define(ARANAGODB_PORT, Type.INT, Importance.HIGH, ARANAGODB_PORT_DOC)
+			.define(ARANGODB_HOST, Type.STRING, Importance.HIGH, ARANGODB_HOST_DOC)
+			.define(ARANGODB_PORT, Type.INT, Importance.HIGH, ARANGODB_PORT_DOC)
 			.define(CONNECTION_USER, Type.STRING, Importance.HIGH, CONNECTION_USER_DOC)
 			.define(CONNECTION_PASSWORD, Type.STRING, Importance.LOW, CONNECTION_PASSWORD_DOC)
 			.define(BATCH_SIZE, Type.INT, Importance.MEDIUM, BATCH_SIZE_DOC)

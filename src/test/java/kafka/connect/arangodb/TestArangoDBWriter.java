@@ -12,22 +12,24 @@ import org.apache.kafka.connect.sink.SinkRecord;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import com.arangodb.ArangoDB;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kafka.connect.arangodb.ArangoDBWriter;
-import kafka.connect.arangodb.Writer;
+import kafka.connect.IntegrationTest;
 import kafka.connect.arangodb.sink.ArangoDBSinkConfig;
 import kafka.connect.beans.Account;
 import kafka.connect.beans.Client;
 import kafka.connect.beans.QuoteRequest;
 
 /**
+ * This is an integration test and the test expect the ArangoDB up and running in the localhost.
  * 
  * @author Sanju Thomas
  *
  */
+@Category(IntegrationTest.class)
 public class TestArangoDBWriter {
 	
 	private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -37,16 +39,16 @@ public class TestArangoDBWriter {
 	
 	@Before
 	public void setup() {
-		conf.put(ArangoDBSinkConfig.ARANAGODB_HOST, "127.0.0.1");
-		conf.put(ArangoDBSinkConfig.ARANAGODB_PORT, "8529");
+		conf.put(ArangoDBSinkConfig.ARANGODB_HOST, "127.0.0.1");
+		conf.put(ArangoDBSinkConfig.ARANGODB_PORT, "8529");
 		conf.put(ArangoDBSinkConfig.CONNECTION_USER, "root");
 		conf.put(ArangoDBSinkConfig.CONNECTION_PASSWORD, "");
 		conf.put(ArangoDBSinkConfig.DATABASE_NAME, "kafka-connect-arangodb");
 		conf.put(ArangoDBSinkConfig.COLLECTION_NAME, "trades");
 		conf.put(ArangoDBSinkConfig.BATCH_SIZE, "100");
 		writer = new ArangoDBWriter(conf);
-		arangoDB =new ArangoDB.Builder().host(conf.get(ArangoDBSinkConfig.ARANAGODB_HOST), 
-	            Integer.valueOf(conf.get(ArangoDBSinkConfig.ARANAGODB_PORT)))
+		arangoDB =new ArangoDB.Builder().host(conf.get(ArangoDBSinkConfig.ARANGODB_HOST), 
+	            Integer.valueOf(conf.get(ArangoDBSinkConfig.ARANGODB_PORT)))
 	            .user(conf.get(ArangoDBSinkConfig.CONNECTION_USER))
 	            .password(conf.get(ArangoDBSinkConfig.CONNECTION_PASSWORD)).build();
 	}

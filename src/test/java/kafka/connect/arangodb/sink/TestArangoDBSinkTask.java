@@ -57,8 +57,8 @@ public class TestArangoDBSinkTask {
         conf.put(ArangoDBSinkConfig.BATCH_SIZE, "100");
         conf.put(ArangoDBSinkConfig.RETRY_BACKOFF_MS, "100");
         conf.put(ArangoDBSinkConfig.MAX_RETRIES, "3");
-        conf.put(ArangoDBSinkConfig.ARANAGODB_HOST, "localhost");
-        conf.put(ArangoDBSinkConfig.ARANAGODB_PORT, "9800");
+        conf.put(ArangoDBSinkConfig.ARANGODB_HOST, "localhost");
+        conf.put(ArangoDBSinkConfig.ARANGODB_PORT, "9800");
         conf.put(ArangoDBSinkConfig.CONNECTION_USER, "test");
         conf.put(ArangoDBSinkConfig.CONNECTION_PASSWORD, "test");
     }
