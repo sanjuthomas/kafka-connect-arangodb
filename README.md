@@ -12,7 +12,7 @@ Apache Kafka is an open-source stream processing platform developed by the Apach
 
 ## High Level Architecture Diagram
 
-![Kafka Connect MarkLogic](arangodb.png)
+![Kafka Connect CouchDB](arangodb.png)
 
 ## Data Mapping
 ArangoDB is a schemaless document store/NoSQL database. Since we are working with plain JSON data, we don't need a schema to serialize and deserialize the messages. 
