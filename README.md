@@ -1,16 +1,16 @@
 # Overview 
-Kafka Connect ArangoDB  is a sink only connector to pull messages from Kafka to store in ArangoDB as JSON documents.
+Kafka Connect ArangoDB  is a sink-only connector that pulls messages from Kafka and stores them in ArangoDB as JSON documents.
 
 ## Prerequisites
-[Apache ZooKeeper](https://zookeeper.apache.org) and [Apache Kafka](https://kafka.apache.org) installed and running in your machine. Please refer to respective sites to download, install, and start ZooKeeper and Kafka. 
+You should have [Apache ZooKeeper](https://zookeeper.apache.org) and [Apache Kafka](https://kafka.apache.org) installed and running on your machine. Please refer to the respective sites to download, install, and start ZooKeeper and Kafka. 
 
 ## What is ArangoDB?
 ArangoDB is a NoSQL multi-model database. Its creators refer to it as a "native multi-model" database to indicate that it was designed specifically to allow key/value, document, and graph data to be stored together and queried with a common language. For more details, please refer to ArangoDB official [website.](https://www.arangodb.com/)
 
 ## What is Apache Kafka?
-Apache Kafka is an open-source stream processing platform developed by the Apache Software Foundation written in Scala and Java. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. For more details, please refer to [kafka home page](https://kafka.apache.org/).
+Apache Kafka is an open-source stream processing platform written in Scala and Java by the Apache Software Foundation. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. For more details, please refer to the [kafka home page](https://kafka.apache.org/).
 
-## High Level Architecture Diagram
+## High-Level Architecture Diagram
 
 ![Kafka Connect ArangoDB](KafkaConnectArangoDB.png)
 
@@ -44,22 +44,22 @@ Copy the [arangodb-sink.properties](https://github.com/sanjuthomas/kafka-connect
 
 Alternatively, you may keep the ```kafka-connect-arangodb-0.0.1-SNAPSHOT.jar``` in another directory and export that directory into Kafka class path before starting the connector.
 
-## How to start connector in stand-alone mode?
+## How to start the connector in stand-alone mode?
 Open a shell prompt, move to kafka_home and execute the following.
 
 ```
 bin/connect-standalone.sh config/arangodb-connect-standalone.properties config/arangodb-sink.properties
 ```
 
-## How to start connector in distribute mode?
-Open a shell prompt, move to kafka_home and execute the following.
+## How to start the connector in distributed mode?
+Open a shell prompt, move to kafka_home, and execute the following.
 
 ```
 bin/connect-distributed.sh config/arangodb-connect-distributed.properties config/arangodb-sink.properties
 ```
 
 ## Contact
-Create an issue in the GitHub or write a line to kafka@sanju.org
+Create an issue in GitHub or write a line to kafka@sanju.org
 
 ## License
 The project is licensed under the MIT license.
